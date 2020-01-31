@@ -63,4 +63,5 @@ func (receiver *queue) dequeue() queue {
 	}
 	return returnFirst
 }
+
 func main() {}
