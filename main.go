@@ -47,7 +47,7 @@ func (receiver *queue) equeue(value interface{}) {
 		current = current.next
 	}
 }
-func (receiver *queue) dequeue() queue {
+func (receiver *queue) dequeue() interface{}  {
 	if receiver.len() == 0 {
 		return queue{}
 	}
@@ -61,7 +61,7 @@ func (receiver *queue) dequeue() queue {
 	if receiver.size == 0 {
 		receiver.lastElement = receiver.firstElement
 	}
-	return returnFirst
+	return returnFirst.firstElement.value
 }
 
 func main() {}
