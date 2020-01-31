@@ -13,10 +13,10 @@ type queueNode struct {
 func (receiver *queue) len() int {
 	return receiver.size
 }
-func (receiver *queue) first() *queueNode {
+func (receiver *queue) first() interface{} {
 	return receiver.firstElement
 }
-func (receiver *queue) last() *queueNode {
+func (receiver *queue) last() interface{} {
 	return receiver.lastElement
 }
 func (receiver *queue) equeue(priority interface{}) {
