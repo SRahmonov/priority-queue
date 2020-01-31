@@ -8,7 +8,7 @@ type queue struct {
 type queueNode struct {
 	next     *queueNode
 	prev     *queueNode
-	priority int
+	priority interface{}
 }
 func (receiver *queue) len() int {
 	return receiver.size
@@ -19,7 +19,7 @@ func (receiver *queue) first() *queueNode {
 func (receiver *queue) last() *queueNode {
 	return receiver.lastElement
 }
-func (receiver *queue) equeue(priority int) {
+func (receiver *queue) equeue(priority interface{}) {
 	if receiver.len() == 0 {
 		receiver.firstElement = &queueNode{
 			next:     nil,
