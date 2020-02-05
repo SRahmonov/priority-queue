@@ -10,14 +10,15 @@ type queueNode struct {
 	prev  *queueNode
 	value interface{}
 }
+
 func (receiver *queue) len() int {
 	return receiver.size
 }
 func (receiver *queue) first() interface{} {
-	return receiver.firstElement
+	return receiver.firstElement.value
 }
 func (receiver *queue) last() interface{} {
-	return receiver.lastElement
+	return receiver.lastElement.value
 }
 func (receiver *queue) equeue(value interface{}) {
 	if receiver.len() == 0 {
@@ -47,21 +48,21 @@ func (receiver *queue) equeue(value interface{}) {
 		current = current.next
 	}
 }
-func (receiver *queue) dequeue() interface{}  {
+func (receiver *queue) dequeue() interface{} {
 	if receiver.len() == 0 {
-		return queue{}
+		return nil
 	}
-	returnFirst := queue{
-		firstElement: receiver.firstElement,
-		lastElement:  nil,
-		size:         0,
+	if receiver.len() == 1 {
+		firstElem := receiver.firstElement.value
+		receiver.firstElement = nil
+		receiver.lastElement = nil
+		receiver.size--
+		return firstElem
 	}
 	receiver.firstElement = receiver.firstElement.next
+	receiver.firstElement.prev = nil
 	receiver.size--
-	if receiver.size == 0 {
-		receiver.lastElement = receiver.firstElement
-	}
-	return returnFirst.firstElement.value
+	return receiver.firstElement.value
 }
 
 func main() {}
