@@ -68,3 +68,4 @@ func Test_queue_delete_items(t *testing.T) {
 		t.Error("after deleting the first element it should be nil, got:", l.len())
 	}
 }
+
